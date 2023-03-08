@@ -1,0 +1,33 @@
+body {
+	background-image:url(/assets/images/pages/faq.png) !important;
+	/*background-color: #272E48;*/
+	/*color: #BDD1F8!important;*/
+}
+.top-card {
+	border:none;
+}
+/*.top-card .card-header, .bottom-card .card-header {
+	background-color: #37517e;
+}
+
+.top-card .card-header h2, .bottom-card .card-header #portfolio-flters li {
+	color: white;
+}*/
+#search {
+	background-color: #272E48;
+	/*border-radius: 30px;*/
+
+}
+.main-menu, .main-menu.menu-light .navigation, .main-menu.menu-light .navigation > li.nav-item.open.has-sub.open, .main-menu.menu-light .navigation > li.nav-item.open.has-sub.sidebar-group-active, .main-menu.menu-light .navigation > li.nav-item.sidebar-group-active.has-sub.open, .main-menu.menu-light .navigation > li.nav-item.sidebar-group-active.has-sub.sidebar-group-active {
+	background-color: #272E48 !important;
+
+}
+.main-menu.menu-light .navigation > li.nav-item.open.has-sub.open, .main-menu.menu-light .navigation > li.nav-item.open.has-sub.sidebar-group-active, .main-menu.menu-light .navigation > li.nav-item.sidebar-group-active.has-sub.open, .main-menu.menu-light .navigation > li.nav-item.sidebar-group-active.has-sub.sidebar-group-active{
+	border:1px solid #272E48;
+}
+.form-control {
+	/*border-radius: 30px;*/
+}
+.nav.nav-tabs .nav-item .nav-link.active:hover, .nav.nav-tabs .nav-item .nav-link.active:hover span, .nav.nav-pills .nav-item .nav-link.active:hover, .nav.nav-pills .nav-item .nav-link.active:hover span {
+	color: #272E48;
+}

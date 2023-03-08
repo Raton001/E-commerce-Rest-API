@@ -1,0 +1,49 @@
+/*================================================================================
+	Item Name: Frest HTML Admin Template
+	Version: 1.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.hidden {
+	display: none;
+}
+.spinner-border {
+	border: 0.1em solid currentColor !important;
+}
+.dashboard-users-success .card {
+	height: 250px;
+}
+.launch-box {
+	position: fixed;
+	top: 425px;
+}
+.disabled {
+	/*background-color: #ccc!important;*/
+}
+.launchpack-avatar {
+  width: 100px;
+}
+#listing-launchpack .archive-store-gallery {
+  width: 100%;
+}
+#component-swiper-coverflow {
+	width: 100%;
+}
+td {
+	font-size: 12px;
+	/*height: 30px;*/
+}
+.itemspec_input {
+	outline: none;
+	border:none;
+}
+
+html body {
+	/*background-color: #fff;*/
+}

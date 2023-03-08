@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-textdirection="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Coded Project') }}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
+
+    {{HTML::style('css/bootstrap.css')}}
+    {{HTML::style('css/bootstrap-extended.css')}}
+    {{HTML::style('css/colors.css')}}
+    {{HTML::style('css/components.css')}}
+    {{HTML::style('css/bootstrap.css')}}
+    {{HTML::style('theme/vendor/bootstrap/css/bootstrap.min.css')}}
+    {{HTML::style('theme/vendor/bootstrap-icons/bootstrap-icons.css')}}
+    {{HTML::style('theme/vendor/boxicons/css/boxicons.min.css')}}
+    {{HTML::style('theme/css/style.css')}}
+
+    @yield('assets')
+<!-- 
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/authentication.css') }}">
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/vendors/css/editors/quill/katex.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/vendors/css/editors/quill/monokai-sublime.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/vendors/css/editors/quill/quill.snow.css') }}"> -->
+   <!--  <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/forms/form-quill-editor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/css/pickers/daterange/daterangepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/css/forms/select/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/css/editors/quill/quill.snow.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/css/extensions/dragula.min.css') }}"> -->
+
+
+
+
+<!--     <link rel="stylesheet" type="text/css" href="{{ asset('css/boxicons.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/boxicons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/animations.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/transformations.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/app-users.css') }}">
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/css/charts/apexcharts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/css/extensions/swiper.min.css') }}"> -->
+    <!-- END: Vendor CSS-->
+
+
+<!-- <link rel="stylesheet" type="text/css" href="{{ asset('vendors/css/tables/datatable/buttons.bootstrap4.min.css') }}"> -->
+
+<!--     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/app-email.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/transformations.css') }}">
+ -->
+
+
+
+
+<style type="text/css">
+      .modal-backdrop {
+        display: none !important;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>  
+</head>
+<!-- <div class="loading"></div> -->
+
+
+      }
+      <?php
+    if (Request::segment(1) != 'login' && Request::segment(1) != 'register'&& Request::segment(1) != 'password') {
+    ?>
+
+        <body class="vertical-layout vertical-menu-modern 2-columns navbar-sticky footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+    <?php
+    } else {
+        ?>
+       <!--  <body class="vertical-layout vertical-menu-modern semi-dark-layout 1-column  navbar-sticky footer-static bg-full-screen-image  blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column" data-layout="semi-dark-layout"> -->
+        <body class="vertical-layout vertical-menu-modern boxicon-layout no-card-shadow content-left-sidebar todo-application navbar-sticky footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="content-left-sidebar">
+        <?php
+    }
+    ?>
+   
+
+    <div id="app">
+
+    <?php
+
+    if (Request::segment(1) != 'login' && Request::segment(1) != 'register'&& Request::segment(1) != 'password') {
+        ?>
+        
+         <header>
+             @include('layouts.top-menu', ['stores'=>$stores])
+         </header>
+
+         <aside>
+             @include('layouts.side-menu')
+         </aside>
+        <?php
+
+    }
+    ?>
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+               
+                    <!-- <div class="row justify-content-center">
+                        <div class="col-md-12"> -->
+                            <main>
+                                @yield('content')
+                            </main>
+                       <!--  </div>
+
+                    </div> -->
+              
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"> </script>
+
+<script>
+$(function() {
+// Extend jQuery addClass function to accept callback function
+var oAddClass = $.fn.addClass;
+$.fn.addClass = function () {
+    for (var i in arguments) {
+        var arg = arguments[i];
+        if ( !! (arg && arg.constructor && arg.call && arg.apply)) {
+            arg();
+            delete arg;
+        }
+    }
+    return oAddClass.apply(this, arguments);
+}
+
+$('#basic-tabs-components .tab-pane:nth-child(1)').addClass('active',function(e){
+           console.log(e);
+});
+
+$('#basic-tabs-components li:nth-child(1) a').addClass('active');
+
+$('#basic-tabs-components li a').on('click', function(e) {
+    e.preventDefault();
+
+    var store = $(this).attr('id').split('-tab')[0];
+$(this).addClass('active');
+
+
+    // $.post( "/ebay/availableSellingAmount/", { "_token": "{{ csrf_token() }}", "store": store } );
+         $.post( "/ebay/availableSellingAmount/", { "_token": "{{ csrf_token() }}", "store": store }, function(response) {
+    
+          $('[data-store-id]').find('[data-available-limit]').html(response[store][0].Summary.AmountLimitRemaining);
+$('[data-available-limit]').parents('[data-dash-stats]').find('[data-spinner').addClass('hidden');
+
+
+    } );
+
+    $.post( "/ebay/orderTotalVolume/", { "_token": "{{ csrf_token() }}", "store": store } );
+
+    $.post( "/ebay/activeListing/", { "_token": "{{ csrf_token() }}", "store": store } );
+
+});
+
+
+
+
+//once the dom element is visible, do the nessesary
+if($('[data-store-id]').is(':visible')) {
+
+
+    // var store = $('.tab-pane').attr('id');
+    // 
+    var store = $.trim($('.nav-item a.active').text());
+
+     $.post( "/ebay/availableSellingAmount/", { "_token": "{{ csrf_token() }}", "store": store }, function(response) {
+    
+    var store = $.trim($('.nav-item a.active').text());
+    
+          $('[data-store-id]').find('[data-available-limit]').html(response[store][0].Summary.AmountLimitRemaining);
+$('[data-available-limit]').parents('[data-dash-stats]').find('[data-spinner').addClass('hidden');
+
+
+    } );
+
+
+    $.post( "/ebay/orderTotalVolume/", { "_token": "{{ csrf_token() }}", "store": store }, function(response) {
+    
+    var store = $.trim($('.nav-item a.active').text());
+    
+        var totalEntries = 0;
+        var totalAmount = 0;
+
+
+        if (typeof(response[store]) == 'undefined') {
+
+            totalEntries = 0;
+            totalAmount = 0;
+
+        } else {
+            totalEntries = response[store].totalEntries;
+            totalAmount = response[store].totalAmount;
+        }
+
+        $('[data-store-id]').find('[data-order-total]').html(totalEntries);
+    $('[data-store-id]').find('[data-order-volume]').html(totalAmount);
+
+    $('[data-order-total]').parents('[data-dash-stats]').find('[data-spinner]').addClass('hidden');
+$('[data-order-volume]').parents('[data-dash-stats]').find('[data-spinner]').addClass('hidden');
+
+    });
+
+    $.post( "/ebay/activeListing/", { "_token": "{{ csrf_token() }}", "store": store }, function(response) {
+    var store = $.trim($('.nav-item a.active').text());
+   
+
+     var entry1 = 0;
+     var entry2 = 0;
+
+
+        if (typeof(response.listing[store]) == 'undefined') {
+
+            entry1 = 0;
+           
+
+        } else {
+            entry1 = response.listing[store];
+            
+        }
+
+         if (typeof(response.shipment[store]) == 'undefined' || response.shipment[store] == '') {
+
+            entry2 = 0;
+
+        } else {
+            
+            entry2 =response.shipment[store];
+        }
+
+$('[data-store-id]').find('[data-active-listing]').html(entry1);
+     $('[data-store-id]').find('[data-pending-shipment]').html(entry2);
+
+$('[data-active-listing]').parents('[data-dash-stats]').find('[data-spinner').addClass('hidden');
+$('[data-pending-shipment]').parents('[data-dash-stats]').find('[data-spinner').addClass('hidden');
+
+    });
+}
+
+
+});
+
+
+    //second
+    //    if($('[data-order-total]').is(':visible')) {
+
+    //          $.ajax({
+    //             url: "/ebay/dashboard2/",
+    //             method: "POST",
+    //             data:{
+    //                 "_token": "{{ csrf_token() }}"
+    //             },
+    //             dataType:'json',
+        
+    //             success: function (response) {
+              
+    //              console.log(response);
+    //           }
+    //       });
+    // }
+
+
+   
+
+   //    sock.on('sender.11:App\\Events\\DashboardEvent', function (data) {
+   //      console.log('private channel');
+   // console.log(data);
+
+   
+   // });
+
+
+</script>
+<script type="text/javascript">
+
+    // var sock = io("http://127.0.0.1:3444", {
+      // transports: ['websocket']
+   // });
+   // var sender = "{{ auth()->check() ? Auth::id() : 'false' }}";
+  
+
+//    sock.on('coded_database_action-channel-one:App\\Events\\DashboardEvent', function (data) {
+
+//    // var action = data.actionId;
+//    var actionData = data.actionData;
+//    var user = data.sender;
+
+//    // //if sender
+//    if (user == sender) {
+
+
+//      $(actionData).each(function(x, y) {
+
+//     // var store = $('.tab-pane:visible').attr('id');
+//     var store = $('[data-store-name]:visible').text();
+
+
+
+//     $('[data-store-id]').find('[data-available-limit]').html(y.selling[store][0].Summary.AmountLimitRemaining);
+
+
+
+//     });
+//    } else {
+//     console.log('cannot display here');
+//    }
+
+
+
+
+ 
+//  //        $('[data-store-id] [data-spinner]').addClass('hidden');
+
+// $('[data-available-limit]').parents('[data-dash-stats]').find('[data-spinner').addClass('hidden');
+
+//  });
+
+
+
+
+//    sock.on('coded_database_action-channel-two:App\\Events\\DashboardVolume', function (data) {
+
+//    // var action = data.actionId;
+//    var actionData = data.actionData;
+//    var user = data.sender;
+
+//    // //if sender
+//    if (user == sender) {
+
+//     // var store = $('.tab-pane:visible').attr('id');
+//     var store = $('[data-store-name]:visible').text();
+
+
+
+//         var totalEntries = 0;
+//         var totalAmount = 0;
+
+
+//         if (typeof(actionData[store]) == 'undefined') {
+
+//             totalEntries = 0;
+//             totalAmount = 0;
+
+//         } else {
+//             totalEntries = actionData[store].totalEntries;
+//             totalAmount = actionData[store].totalAmount;
+//         }
+
+//         $('[data-store-id]').find('[data-order-total]').html(totalEntries);
+//     $('[data-store-id]').find('[data-order-volume]').html(totalAmount);
+    
+     
+//    } else {
+//     console.log('cannot display here');
+//    }
+
+ 
+//         // $('[data-order-total] [data-spinner]').addClass('hidden');
+
+
+
+// $('[data-order-total]').parents('[data-dash-stats]').find('[data-spinner]').addClass('hidden');
+// $('[data-order-volume]').parents('[data-dash-stats]').find('[data-spinner]').addClass('hidden');
+
+
+//  });
+
+
+
+//       sock.on('coded_database_action-channel-three:App\\Events\\DashboardActiveListing', function (data) {
+
+//    // var action = data.actionId;
+//    var actionData = data.actionData;
+//    var user = data.sender;
+
+//    // //if sender
+//   if (user == sender) {
+//     var store = $('[data-store-name]:visible').text();
+       
+
+//      $(actionData).each(function(x, y) {
+
+
+//         var entry1 = 0;
+//         var entry2 = 0;
+
+//         if (typeof(y.listing[store]) == 'undefined') {
+
+//             entry1 = 0;
+           
+
+//         } else {
+//             entry1 = y.listing[store];
+            
+//         }
+
+//          if (typeof(y.shipment[store]) == 'undefined' || y.shipment[store] == '') {
+
+//             entry2 = 0;
+
+//         } else {
+            
+//             entry2 =y.shipment[store];
+//             // entry2 = y.shipment[store][0].SoldList.PaginationResult.TotalNumberOfEntries
+//         }
+
+// $('[data-store-id]').find('[data-active-listing]').html(entry1);
+//      $('[data-store-id]').find('[data-pending-shipment]').html(entry2);
+
+//     // $('[data-store-id]').find('[data-available-limit]').html(y.listing[store]);
+//     //  $('[data-store-id]').find('[data-pending-shipment]').html(y.listing[store][0].SoldList.PaginationResult.TotalNumberOfEntries);
+
+//     });
+//    } else {
+//     console.log('cannot display here');
+//    }
+
+
+
+// $('[data-active-listing]').parents('[data-dash-stats]').find('[data-spinner').addClass('hidden');
+// $('[data-pending-shipment]').parents('[data-dash-stats]').find('[data-spinner').addClass('hidden');
+
+
+
+//  });
+
+
+</script>
+
+<script type="text/javascript">
+  var csrfToken = "{{ csrf_token() }}";
+</script>
+{{HTML::script('js/coded.js')}}
+
+{{HTML::script('js/vendors/js/vendors.min.js')}}
+{{HTML::script('fonts/LivIconsEvo/js/LivIconsEvo.tools.js')}}
+{{HTML::script('fonts/LivIconsEvo/js/LivIconsEvo.defaults.js')}}
+{{HTML::script('fonts/LivIconsEvo/js/LivIconsEvo.min.js')}}
+
+{{HTML::script('js/scripts/configs/vertical-menu-light.js')}}
+{{HTML::script('js/core/app-menu.js')}}
+{{HTML::script('js/core/app.js')}}
+{{HTML::script('js/scripts/components.js')}}
+{{HTML::script('js/scripts/footer.js')}}
+
+</body>
+</html>
